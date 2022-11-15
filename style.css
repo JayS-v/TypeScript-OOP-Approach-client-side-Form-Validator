@@ -1,0 +1,490 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto/Roboto-Regular.eot");
+  src: url("fonts/Roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("fonts/Roboto/Roboto-Regular.woff2") format("woff2"), url("fonts/Roboto/Roboto-Regular.woff") format("woff"), url("fonts/Roboto/Roboto-Regular.ttf") format("truetype"), url("fonts/Roboto/Roboto-Regular.svg#Roboto-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  background-image: linear-gradient(to right, rgb(68, 116, 132), rgb(60, 92, 108));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+  font-family: "Roboto", Tahoma, Arial, sans-serif;
+}
+
+form {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.form_container {
+  width: 650px;
+  margin: 20px;
+  padding: 30px;
+}
+
+.header {
+  padding-top: 24px;
+  padding-bottom: 15px;
+  background-color: rgb(240, 244, 244);
+  border-bottom: solid #cccccc 1px;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  margin-top: 0px;
+  color: #666767;
+}
+
+.footer {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  background-color: rgb(240, 244, 244);
+  border-radius: 0 0 15px 15px;
+  text-align: right;
+  border-top: #cccccc solid 1px;
+  height: 40px;
+}
+
+.submit {
+  height: 40px;
+  width: 90px;
+  margin-right: 30px;
+  padding: 10px;
+  background-color: #01bb93;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.submit:focus {
+  height: 35px;
+  width: 85px;
+  transition: 0.3s;
+}
+.submit:hover {
+  font-size: 1em;
+}
+
+/* grid & style applying for form container labels */
+.account_information {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  grid-template-areas: "fname lname " "email email" "password confpassword" "gender hobbies" "incomesource incomeamount" "picture age" "bio bio";
+}
+
+.fname {
+  grid-area: fname;
+  color: #01bb93;
+  font-weight: bold;
+}
+.fname input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.fname input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.fname ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.fname :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.fname ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.fname :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.lname {
+  grid-area: lname;
+  color: #01bb93;
+  font-weight: bold;
+}
+.lname input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.lname input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.lname ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.lname :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.lname ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.lname :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.email {
+  grid-area: email;
+  color: #01bb93;
+  font-weight: bold;
+}
+.email input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.email input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.email ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.email :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.email ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.email :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.password {
+  grid-area: password;
+  color: #01bb93;
+  font-weight: bold;
+}
+.password input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.password input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.password ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.password :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.password ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.password :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.confpassword {
+  grid-area: confpassword;
+  color: #01bb93;
+  font-weight: bold;
+}
+.confpassword input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.confpassword input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.confpassword ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.confpassword :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.confpassword ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.confpassword :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.gender {
+  grid-area: gender;
+  color: #01bb93;
+  font-weight: bold;
+}
+.gender label {
+  color: #666767;
+  font-size: 0.9em;
+}
+.gender :checked + label {
+  font-size: 1em;
+  transition: 0.5s ease-in;
+}
+
+.hobbies {
+  grid-area: hobbies;
+  color: #01bb93;
+  font-weight: bold;
+}
+.hobbies label {
+  color: #666767;
+  font-size: 0.9em;
+}
+.hobbies :checked + label {
+  font-size: 1em;
+  transition: 0.5s ease-in;
+}
+
+.age {
+  grid-area: age;
+  color: #01bb93;
+  font-weight: bold;
+}
+.age input {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  background-color: white;
+}
+.age input[value] {
+  font-size: 1em;
+  padding-left: 10px;
+}
+.age ::-moz-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.age :-ms-input-placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.age ::placeholder {
+  color: #d9d8db;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 1.3em;
+}
+.age :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+  transition: 0.3s;
+}
+
+.upload_picture {
+  grid-area: picture;
+  color: #01bb93;
+  font-weight: bold;
+  position: relative;
+}
+.upload_picture input {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  font-size: 1.1em;
+  color: #666767;
+  font-weight: 500;
+}
+.upload_picture input[type=file]::-webkit-file-upload-button {
+  border: solid #d9d8db 1px;
+  padding: 5px;
+  background: white;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.upload_picture input[type=file]::file-selector-button {
+  border: solid #d9d8db 1px;
+  padding: 5px;
+  background: white;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.income_source {
+  grid-area: incomesource;
+  color: #01bb93;
+  font-weight: bold;
+}
+.income_source select {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 32px;
+  font-size: 1em;
+  padding-left: 10px;
+  background-color: white;
+}
+
+.income_amount {
+  grid-area: incomeamount;
+  color: #01bb93;
+  font-weight: bold;
+}
+.income_amount input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 80%;
+  /* track and thumb settings below */
+}
+.income_amount input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(to bottom, #d9d8db, #cccccc);
+  height: 5px;
+  border-radius: 5px;
+  border: inset #d9d8db 1px;
+}
+.income_amount input[type=range]::-moz-range-track {
+  background: linear-gradient(to bottom, #d9d8db, #cccccc);
+  height: 5px;
+  border-radius: 5px;
+  border: inset #d9d8db 1px;
+}
+.income_amount input[type=range]::-webkit-slider-thumb {
+  background-color: rgb(240, 244, 244);
+  height: 15px;
+  width: 1rem;
+  border: solid #01bb93 1px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+}
+.income_amount input[type=range]::-moz-range-thumb {
+  background-color: rgb(240, 244, 244);
+  height: 15px;
+  width: 1rem;
+  border: solid #01bb93 1px;
+  border-radius: 50%;
+}
+.income_amount output {
+  color: white;
+  background-color: #01bb93;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.bio {
+  grid-area: bio;
+  color: #01bb93;
+  font-weight: bold;
+}
+.bio textarea {
+  width: 100%;
+  border: solid #d9d8db 1px;
+  border-radius: 5px;
+  height: 70px;
+}
+.bio :focus {
+  border: solid #666767 1px;
+  font-size: 1em;
+  outline: none !important;
+  box-shadow: 0 0 2px;
+}
+
+@media all and (max-width: 768px) {
+  body {
+    width: 80%;
+  }
+  .footer {
+    text-align: center;
+  }
+  .account_information {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .upload_picture {
+    margin-bottom: 19px;
+  }
+}/*# sourceMappingURL=style.css.map */

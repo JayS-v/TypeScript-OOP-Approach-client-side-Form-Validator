@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Account Form</title>
+</head>
+<body>
+    <form method="post" action="" >
+        <h1 class="header">Create Account</h1>
+        <div class="form_container">
+            <div class="account_information">
+                <div class="fname">
+                    <label for="first_name">First name *</label> <br/>
+                    <input type="text" id="first_name" name="first_name" placeholder="enter your first name" required/>
+                </div>
+                <div class="lname">
+                    <label for="last_name">Last name</label> <br/>
+                    <input type="text" id="last_name" name="last_name" placeholder="enter your last name"/>
+                </div>
+                <div class="email">
+                    <label for="email">Email*</label> <br/>
+                    <input type="email" id="email" name="email" placeholder="enter your email" required/>
+                </div>
+                <div class="password">
+                    <label for="password">Password*</label> <br/>
+                    <input type="password" id="password" name="password" placeholder="enter your password" required/>
+                </div>
+                <div class="confpassword">
+                    <label for="confirmed_password">Confirm Password*</label> <br/>
+                    <input type="password" id="confirmed_password" name="confirmed_password" placeholder="enter your password again" required/>
+                </div>
+                <div class="gender"> Gender: <br/>
+                    <input type="radio" name="gender" id="male" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="hobbies"> Hobbies <br/>
+                    <input type="checkbox" id="music" value="music" name="hobbies">
+                    <label for="music">Music</label>
+                    <input type="checkbox" id="sports" value="sports" name="hobbies">
+                    <label for="sports">Sports</label>
+                    <input type="checkbox" id="travel" value="travel" name="hobbies">
+                    <label for="travel">Travel</label>
+                    <input type="checkbox" id="mouvies" value="mouvies" name="hobbies">
+                    <label for="movies">Movies</label>
+                </div>
+                <div class="income_source">
+                    <label for="income">Source of Income</label> <br/>
+                    <select name="income" id="income">
+                        <option value="self_emloyed">Self-Employed</option>
+                        <option value="emloyed" selected>Employed</option>
+                        <option value="business">Owner of Business</option>
+                        <option value="investor">Inverstor</option>
+                    </select>
+                </div>
+                <div class="income_amount"> Income <br/>
+                    <input type="range" name="income" id="range_income" value="20" min="0" max="500" step="10" oninput="range_income_disp.value = range_income.value + 'K'">
+                    <output id="range_income_disp">20K</output>
+                </div>
+                <div class="upload_picture"> 
+                    <label for="upload_profile_picture">Upload Profile Picture</label>
+                    <input type="file" id="upload_profile_picture" name="upload_profile_picture" accept="image/png, image/jpeg">   
+                </div>
+                <div class="age">
+                    <label for="age">Age</label> <br/>
+                    <input type="number" id="age" name="age" min="1" max="150" value="18">
+                </div>
+                <div class="bio">
+                    <label for="bio">Bio</label> <br/>
+                    <textarea name="bio" id="bio" cols="50" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <input class="submit" type="submit" value="Create">
+        </div> 
+    </form>
+</body>
+</html>

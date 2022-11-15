@@ -1,0 +1,273 @@
+//import font-face
+@use 'fonts/Roboto/stylesheet.css';
+
+//page background 
+$backcolor1: rgb(68,116,132);
+$backcolor2: rgb(60,92,108);
+
+//form background
+$backcolor3: #fafafa;
+
+//header+footer background
+$headercolor: rgb(240,244,244); 
+
+//header+footer border
+$hfbordercolor: #cccccc; 
+
+//text
+$textcolor1: #01bb93;
+$textcolor2: #666767;
+$textcolor3: #d9d8db;
+
+body {
+    background-image: linear-gradient(to right, $backcolor1, $backcolor2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-family: 'Roboto', Tahoma, Arial, sans-serif;
+}
+
+form {
+    background-color: $backcolor3;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.form_container {
+    width: 650px;
+    margin: 20px;
+    padding: 30px;    
+}
+
+.header {
+    padding-top: 24px;
+    padding-bottom: 15px;
+    background-color: $headercolor;
+    border-bottom: solid $hfbordercolor 1px;
+    border-radius: 15px 15px  0 0; 
+    text-align: center;
+    margin-top: 0px;
+    color: $textcolor2;
+}
+
+.footer {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    background-color: $headercolor;
+    border-radius: 0 0 15px 15px;
+    text-align: right;
+    border-top: $hfbordercolor solid 1px;
+    height: 40px;
+}
+
+//submit button
+.submit {
+    height: 40px;
+    width: 90px;
+    margin-right: 30px;
+    padding: 10px;
+    background-color: $textcolor1;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+   
+    &:focus {
+        height: 35px;
+        width: 85px;
+        transition: 0.3s;
+    }
+    &:hover {
+        font-size: 1em;
+    }
+}
+
+
+/* grid & style applying for form container labels */
+
+//define grid area and text style for main labels 
+@mixin define_grid_area($property) {
+    grid-area: $property;
+    color: $textcolor1;
+    font-weight: bold;
+}
+
+//input styles 
+@mixin inputstyle {
+    input {
+        width: 100%;
+        border: solid $textcolor3 1px;
+        border-radius: 5px;
+        height: 32px; 
+        &[value] {font-size: 1em; padding-left: 10px;}
+        background-color: white;
+    };
+    ::placeholder {
+        color: $textcolor3;
+        padding: 5px;
+        font-weight: 500;
+        font-size: 1.3em;
+    };
+    :focus {
+        border: solid $textcolor2 1px;
+        font-size: 1em;
+        outline: none !important;
+        box-shadow: 0 0 2px;
+        transition: 0.3s;
+    } 
+}
+
+//radio and checkbox style
+@mixin radio_checkbox_style {
+    label {color:$textcolor2; font-size: 0.9em;}
+    :checked + label {font-size: 1em ; transition: 0.5s ease-in;}
+}
+
+//grid style applying
+.account_information {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 15px;
+   grid-template-areas: 
+    "fname lname "
+    "email email"
+    "password confpassword"
+    "gender hobbies"
+    "incomesource incomeamount"
+    "picture age"
+    "bio bio";
+}
+
+//grid area and input style mixins applying
+.fname {@include define_grid_area(fname); @include inputstyle;}
+.lname {@include define_grid_area(lname); @include inputstyle;}
+.email {@include define_grid_area(email); @include inputstyle;}
+.password {@include define_grid_area(password); @include inputstyle;}
+.confpassword {@include define_grid_area(confpassword); @include inputstyle;}
+.gender {@include define_grid_area(gender); @include radio_checkbox_style}
+.hobbies {@include define_grid_area(hobbies); @include radio_checkbox_style}
+.age {@include define_grid_area(age); @include inputstyle;}
+
+.upload_picture {
+    @include define_grid_area(picture);    
+    position: relative;
+
+    //button and choosen file element area 
+    input {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        font-size: 1.1em;
+        color: $textcolor2;
+        font-weight: 500;
+    }
+
+    // upload picture button style
+    input[type=file]::file-selector-button { 
+        border: solid $textcolor3 1px;
+        padding: 5px;
+        background: white;
+        font-size: 0.8em;
+        cursor: pointer;
+        border-radius: 5px;
+    }  
+} 
+
+.income_source {
+    @include define_grid_area(incomesource); 
+    select {
+        width: 100%;
+        border: solid $textcolor3 1px;
+        border-radius: 5px;
+        height: 32px; 
+        font-size: 1em; 
+        padding-left: 10px;  
+        background-color: white;
+    }
+}
+
+.income_amount {
+    @include define_grid_area(incomeamount); 
+
+    // reset range default styles: all browsers 
+    input[type="range"] {           
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 80%;  
+    
+        /* track and thumb settings below */
+
+        //track style
+        @mixin trackstyle {           
+            background: linear-gradient(to bottom, $textcolor3, $hfbordercolor);
+            height: 5px;
+            border-radius: 5px;
+            border: inset $textcolor3 1px;
+        }
+        &::-webkit-slider-runnable-track {@include trackstyle}; //Chrome, Safari, Opera, Edge
+        &::-moz-range-track {@include trackstyle}; //Firefox
+
+        //thumb style
+        @mixin thumbstyle {          
+            background-color: $headercolor;
+            height: 15px;
+            width: 1rem;    
+            border: solid $textcolor1 1px;
+            border-radius: 50%; 
+        }  
+        &::-webkit-slider-thumb {
+            @include thumbstyle;
+
+            //reset default style
+            -webkit-appearance: none; 
+            appearance: none;
+
+            // Centers thumb on the track: margin-top = (track height in px / 2) - (thumb height in px /2)
+            margin-top: -5px;      
+        }
+        &::-moz-range-thumb {@include thumbstyle};
+    };
+    //output amount 
+    output {   
+        color:white; 
+        background-color: $textcolor1;
+        padding: 5px;
+        border-radius: 5px;
+    };
+};
+
+.bio {
+    @include define_grid_area(bio); 
+    textarea{   
+        width: 100%;
+        border: solid $textcolor3 1px;
+        border-radius: 5px;
+        height: 70px;
+    };
+    :focus {
+        border: solid $textcolor2 1px;
+        font-size: 1em;
+        outline: none !important;
+        box-shadow: 0 0 2px;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+    body {width: 80%;}
+    .footer{text-align: center;}
+    .account_information {
+        width: 50%; 
+        display: flex;
+        flex-direction: column;
+        margin: auto;   
+    }
+    .upload_picture {margin-bottom: 19px}
+}
+
+
+
