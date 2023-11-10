@@ -1,6 +1,3 @@
-//import font-face
-@use 'fonts/Roboto/stylesheet.css';
-
 //page background 
 $backcolor1: rgb(68,116,132);
 $backcolor2: rgb(60,92,108);
@@ -19,13 +16,57 @@ $textcolor1: #01bb93;
 $textcolor2: #666767;
 $textcolor3: #d9d8db;
 
+//unputs padding
+$input-types: 
+    text, 
+    password, 
+    email,
+    number;
+
+@each $input-type in $input-types {
+    input[type=#{$input-type}] {
+        padding-left: 10px;
+    }
+} 
+
+//adding with JS ----
+._error {
+    box-shadow: 0 0 5px red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    padding-left: 5px;
+}
+
+.form-agreement {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    
+    .error-message {
+        position: absolute;
+        transform: translateY(-35px);
+        padding: 10px;
+        background-color: #cccccc;
+        opacity: 0.6;
+        border-radius: 20px;
+        @media (max-width: 768px) {
+            font-size: 0.7rem;
+        } 
+    }
+}
+//------------------
+
 body {
     background-image: linear-gradient(to right, $backcolor1, $backcolor2);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.1em;
-    font-family: 'Roboto', Tahoma, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
 }
 
 form {
@@ -33,10 +74,13 @@ form {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
+    max-width: 750px;
+    min-width: 320px;
 }
 
 .form_container {
-    width: 650px;
+    max-width: 650px;
+    width: 80%;
     margin: 20px;
     padding: 30px;    
 }
@@ -62,6 +106,14 @@ form {
     height: 40px;
 }
 
+.input-form-labels {
+    line-height: 36px;
+}
+
+.input-form-titles {
+    line-height: 24px;
+}
+
 //submit button
 .submit {
     height: 40px;
@@ -73,14 +125,13 @@ form {
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    transition: background-color 500ms ease-in, transform 200ms linear;
    
-    &:focus {
-        height: 35px;
-        width: 85px;
-        transition: 0.3s;
+    &:active {
+        transform: scale(0.95);
     }
     &:hover {
-        font-size: 1em;
+        background-color: #039172;
     }
 }
 
@@ -101,8 +152,12 @@ form {
         border: solid $textcolor3 1px;
         border-radius: 5px;
         height: 32px; 
-        &[value] {font-size: 1em; padding-left: 10px;}
         background-color: white;
+
+        // &[value] {
+        //     font-size: 1em; 
+        //     padding-left: 10px;
+        // }
     };
     ::placeholder {
         color: $textcolor3;
@@ -111,25 +166,34 @@ form {
         font-size: 1.3em;
     };
     :focus {
-        border: solid $textcolor2 1px;
-        font-size: 1em;
+        font-size: 0.85em;
         outline: none !important;
-        box-shadow: 0 0 2px;
-        transition: 0.3s;
+        // box-shadow: 0 0 2px ;
+        box-shadow: 0 0 5px $textcolor2;
+        transition: 500ms;
     } 
 }
 
+
+
 //radio and checkbox style
 @mixin radio_checkbox_style {
-    label {color:$textcolor2; font-size: 0.9em;}
-    :checked + label {font-size: 1em ; transition: 0.5s ease-in;}
+    label {
+        color:$textcolor2; 
+        font-size: 0.9em;
+    }
+    //to change later
+    :checked + label {
+        font-size: 0.95em ; 
+        transition: 300ms ease-in;
+    }
 }
 
 //grid style applying
 .account_information {
    display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 15px;
+   grid-template-columns: repeat(2, 50%);
+   gap: 18px;
    grid-template-areas: 
     "fname lname "
     "email email"
@@ -156,9 +220,6 @@ form {
 
     //button and choosen file element area 
     input {
-        position: absolute;
-        top: 20px;
-        left: 0;
         font-size: 1.1em;
         color: $textcolor2;
         font-weight: 500;
@@ -243,6 +304,7 @@ form {
 .bio {
     @include define_grid_area(bio); 
     textarea{   
+        padding-left: 10px;
         width: 100%;
         border: solid $textcolor3 1px;
         border-radius: 5px;
@@ -261,13 +323,22 @@ form {
     body {width: 80%;}
     .footer{text-align: center;}
     .account_information {
-        width: 50%; 
         display: flex;
         flex-direction: column;
         margin: auto;   
+        padding: 20px;
     }
     .upload_picture {margin-bottom: 19px}
 }
 
+.form-agreement {
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: $textcolor2;
+}
 
 
